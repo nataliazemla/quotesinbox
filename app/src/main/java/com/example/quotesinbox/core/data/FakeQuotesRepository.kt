@@ -19,7 +19,7 @@ class FakeQuotesRepository(
         return quotes
     }
 
-    override suspend fun toggleFavourites(id: String): List<Quote> {
+    override suspend fun toggleFavourite(id: String): List<Quote> {
         delay(150)
         quotes = quotes.map { q -> if (q.id == id) q.copy(isFavourite = !q.isFavourite) else q }
         return quotes
