@@ -53,7 +53,7 @@ flowchart LR
 ```mermaid
 flowchart LR
   UI[Compose UI] -->|Intent| Store[MVI ViewModel/Store]
-  Store -->|Result| Reducer[Reducer reduce(State, Result)]
+  Store -->|Result| Reducer["Reducer: reduce(State, Result)"]
   Reducer -->|State| Store
   Store -->|StateFlow State| UI
   Store -->|Effect Flow| UI
