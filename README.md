@@ -41,3 +41,21 @@ flowchart LR
   VM -->|SharedFlow UiEffect| UI
   VM --> Repo[QuotesRepository]
   Repo --> VM
+```
+
+### MVI
+- UI sends Intent to a Store/ViewModel (accept(intent))
+- Store executes async work and emits Result
+- Reducer is a pure function: State + Result -> State
+- One-off actions are emitted as Effect
+
+**MVI flow**
+```mermaid
+flowchart LR
+  UI[Compose UI] -->|Intent| Store[MVI ViewModel/Store]
+  Store -->|Result| Reducer[Reducer reduce(State, Result)]
+  Reducer -->|State| Store
+  Store -->|StateFlow State| UI
+  Store -->|Effect Flow| UI
+  Store --> Repo[QuotesRepository]
+  Repo --> Store
