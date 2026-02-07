@@ -59,3 +59,12 @@ flowchart LR
   Store -->|Effect Flow| UI
   Store --> Repo[QuotesRepository]
   Repo --> Store
+  ```
+
+## The Diffrence
+In this project, both MVVM and MVI use a single observable UI state exposed as StateFlow.
+The difference is how state transitions are modeled and enforced:
+- MVVM: UI calls ViewModel methods; the ViewModel updates state directly in multiple code paths.
+- MVI: UI sends Intent; async work emits Result; state changes happen only through a pure Reducer(State, Result); one-off actions are modeled as Effect.
+
+see more: https://github.com/nataliazemla/quotesinboxpro
